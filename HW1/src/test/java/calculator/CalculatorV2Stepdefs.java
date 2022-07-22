@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class CalculatovV2Stepdefs {
+public class CalculatorV2Stepdefs {
 
     private Calculator calculator;
     private int value1;
