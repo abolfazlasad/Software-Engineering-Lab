@@ -19,7 +19,7 @@ public class CalculatovV2Stepdefs {
         calculator = new Calculator();
     }
 
-    @Given("^Two input values, (\\d+) and (\\d+) and operation (\\*|\\/|\\^)$")
+    @Given("^Two input values, (\\-?\\d+) and (\\-?\\d+) and operation (\\*|\\/|\\^)$")
     public void twoInputValuesWithOperation(int arg0, int arg1, char arg2) {
         value1 = arg0;
         value2 = arg1;
@@ -38,7 +38,7 @@ public class CalculatovV2Stepdefs {
         System.out.print(result);
     }
 
-    @Then("^I expect the result (\\d+) on calculator$")
+    @Then("^I expect the result (\\-?\\d+) on calculator$")
     public void iExpectTheResultOfCalculator(int arg0) {
         Assert.assertEquals(arg0, result);
     }
