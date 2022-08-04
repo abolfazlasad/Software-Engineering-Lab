@@ -21,4 +21,14 @@ public class SquareTest {
         // Assert
         assertEquals(3, square.getSide());
     }
+    @Test
+    public void checkSquareImplementsISquare() {
+        // Arrange
+        ISquare iSquare = new Square(3);
+        // Act
+        iSquare.setSide(6);
+        // Assert
+        assertEquals(6, iSquare.getSide());
+        assertEquals(36, iSquare.computeArea());
+    }
 }
