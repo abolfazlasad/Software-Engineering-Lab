@@ -1,4 +1,6 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
@@ -30,16 +32,23 @@ public class RectangleTest {
         // Assert
         assertEquals(2, rectangle.getWidth());
     }
-    @Test(expected = NonPositiveArgException.class)
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    @Test
     public void checkNonPositiveExceptionInHeight() {
         // Arrange
         Rectangle rectangle = new Rectangle(3, 3);
+        thrown.expect(NonPositiveArgException.class);
+        thrown.expectMessage("Height must be positive");
         // Act
         rectangle.setHeight(-1);
     }
-    @Test(expected = NonPositiveArgException.class)
-    public void checkNonPositiveExceptionInWeight() {
+    @Test
+    public void checkNonPositiveExceptionInWidth() {
         // Arrange
+        thrown.expect(NonPositiveArgException.class);
+        thrown.expectMessage("Width must be positive");
+        // Act
         Rectangle rectangle = new Rectangle(7, -3);
     }
     @Test
