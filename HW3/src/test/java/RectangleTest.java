@@ -42,4 +42,16 @@ public class RectangleTest {
         // Arrange
         Rectangle rectangle = new Rectangle(7, -3);
     }
+    @Test
+    public void checkRectangleImplementsIRectangle() {
+        // Arrange
+        IRectangle iRectangle =  new Rectangle(2, 1);
+        // Act
+        iRectangle.setHeight(9);
+        iRectangle.setWidth(3);
+        // Assert
+        assertEquals(9, iRectangle.getHeight());
+        assertEquals(3, iRectangle.getWidth());
+        assertEquals(27, iRectangle.computeArea());
+    }
 }
