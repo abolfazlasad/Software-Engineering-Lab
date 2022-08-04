@@ -30,4 +30,16 @@ public class RectangleTest {
         // Assert
         assertEquals(2, rectangle.getWidth());
     }
+    @Test(expected = NonPositiveArgException.class)
+    public void checkNonPositiveExceptionInHeight() {
+        // Arrange
+        Rectangle rectangle = new Rectangle(3, 3);
+        // Act
+        rectangle.setHeight(-1);
+    }
+    @Test(expected = NonPositiveArgException.class)
+    public void checkNonPositiveExceptionInWeight() {
+        // Arrange
+        Rectangle rectangle = new Rectangle(7, -3);
+    }
 }

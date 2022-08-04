@@ -6,9 +6,13 @@ public class Rectangle {
         setWidth(width);
     }
     public void setHeight(int height) {
+        if (height <= 0)
+            throw new NonPositiveArgException("Height must be positive");
         this.height = height;
     }
     public void setWidth(int width) {
+        if (width <= 0)
+            throw new NonPositiveArgException("Width must be positive");
         this.width = width;
     }
     public int getHeight() {
