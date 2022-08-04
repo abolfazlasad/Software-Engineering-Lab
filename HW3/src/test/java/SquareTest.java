@@ -1,4 +1,6 @@
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,5 +32,14 @@ public class SquareTest {
         // Assert
         assertEquals(6, iSquare.getSide());
         assertEquals(36, iSquare.computeArea());
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    @Test
+    public void checkNonPositiveSideException() {
+        thrown.expect(NonPositiveArgException.class);
+        thrown.expectMessage("Side must be positive");
+        ISquare iSquare = new Square(-2);
     }
 }
