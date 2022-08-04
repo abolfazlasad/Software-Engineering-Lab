@@ -12,4 +12,13 @@ public class SquareTest {
         // Assert
         assertEquals(9, area);
     }
+    @Test
+    public void checkGetterAndSetterForSide() {
+        // Arrange
+        Square square = new Square(1);
+        // Act
+        square.setSide(3);
+        // Assert
+        assertEquals(3, square.getSide());
+    }
 }

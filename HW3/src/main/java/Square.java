@@ -6,4 +6,11 @@ public class Square {
     public int computeArea() {
         return iRectangle.computeArea();
     }
+    public void setSide(int side) {
+        iRectangle.setHeight(side);
+        iRectangle.setWidth(side);
+    }
+    public int getSide() {
+        return iRectangle.getHeight();
+    }
 }
