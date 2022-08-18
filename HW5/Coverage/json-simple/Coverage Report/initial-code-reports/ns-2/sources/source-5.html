@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ContentHandler</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.json.simple.parser</a>
+</div>
+
+<h1>Coverage Summary for Class: ContentHandler (org.json.simple.parser)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ContentHandler</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package org.json.simple.parser;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;/**
+<i class="no-highlight">6</i>&nbsp; * A simplified and stoppable SAX-like content handler for stream processing of JSON text. 
+<i class="no-highlight">7</i>&nbsp; * 
+<i class="no-highlight">8</i>&nbsp; * @see org.xml.sax.ContentHandler
+<i class="no-highlight">9</i>&nbsp; * @see org.json.simple.parser.JSONParser#parse(java.io.Reader, ContentHandler, boolean)
+<i class="no-highlight">10</i>&nbsp; * 
+<i class="no-highlight">11</i>&nbsp; * @author FangYidong&lt;fangyidong@yahoo.com.cn&gt;
+<i class="no-highlight">12</i>&nbsp; */
+<i class="no-highlight">13</i>&nbsp;public interface ContentHandler {
+<i class="no-highlight">14</i>&nbsp;	/**
+<i class="no-highlight">15</i>&nbsp;	 * Receive notification of the beginning of JSON processing.
+<i class="no-highlight">16</i>&nbsp;	 * The parser will invoke this method only once.
+<i class="no-highlight">17</i>&nbsp;     * 
+<i class="no-highlight">18</i>&nbsp;	 * @throws ParseException 
+<i class="no-highlight">19</i>&nbsp;	 * 			- JSONParser will stop and throw the same exception to the caller when receiving this exception.
+<i class="no-highlight">20</i>&nbsp;	 */
+<i class="no-highlight">21</i>&nbsp;	void startJSON() throws ParseException, IOException;
+<i class="no-highlight">22</i>&nbsp;	
+<i class="no-highlight">23</i>&nbsp;	/**
+<i class="no-highlight">24</i>&nbsp;	 * Receive notification of the end of JSON processing.
+<i class="no-highlight">25</i>&nbsp;	 * 
+<i class="no-highlight">26</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">27</i>&nbsp;	 */
+<i class="no-highlight">28</i>&nbsp;	void endJSON() throws ParseException, IOException;
+<i class="no-highlight">29</i>&nbsp;	
+<i class="no-highlight">30</i>&nbsp;	/**
+<i class="no-highlight">31</i>&nbsp;	 * Receive notification of the beginning of a JSON object.
+<i class="no-highlight">32</i>&nbsp;	 * 
+<i class="no-highlight">33</i>&nbsp;	 * @return false if the handler wants to stop parsing after return.
+<i class="no-highlight">34</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">35</i>&nbsp;     *          - JSONParser will stop and throw the same exception to the caller when receiving this exception.
+<i class="no-highlight">36</i>&nbsp;     * @see #endJSON
+<i class="no-highlight">37</i>&nbsp;	 */
+<i class="no-highlight">38</i>&nbsp;	boolean startObject() throws ParseException, IOException;
+<i class="no-highlight">39</i>&nbsp;	
+<i class="no-highlight">40</i>&nbsp;	/**
+<i class="no-highlight">41</i>&nbsp;	 * Receive notification of the end of a JSON object.
+<i class="no-highlight">42</i>&nbsp;	 * 
+<i class="no-highlight">43</i>&nbsp;	 * @return false if the handler wants to stop parsing after return.
+<i class="no-highlight">44</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">45</i>&nbsp;     * 
+<i class="no-highlight">46</i>&nbsp;     * @see #startObject
+<i class="no-highlight">47</i>&nbsp;	 */
+<i class="no-highlight">48</i>&nbsp;	boolean endObject() throws ParseException, IOException;
+<i class="no-highlight">49</i>&nbsp;	
+<i class="no-highlight">50</i>&nbsp;	/**
+<i class="no-highlight">51</i>&nbsp;	 * Receive notification of the beginning of a JSON object entry.
+<i class="no-highlight">52</i>&nbsp;	 * 
+<i class="no-highlight">53</i>&nbsp;	 * @param key - Key of a JSON object entry. 
+<i class="no-highlight">54</i>&nbsp;	 * 
+<i class="no-highlight">55</i>&nbsp;	 * @return false if the handler wants to stop parsing after return.
+<i class="no-highlight">56</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">57</i>&nbsp;     * 
+<i class="no-highlight">58</i>&nbsp;     * @see #endObjectEntry
+<i class="no-highlight">59</i>&nbsp;	 */
+<i class="no-highlight">60</i>&nbsp;	boolean startObjectEntry(String key) throws ParseException, IOException;
+<i class="no-highlight">61</i>&nbsp;	
+<i class="no-highlight">62</i>&nbsp;	/**
+<i class="no-highlight">63</i>&nbsp;	 * Receive notification of the end of the value of previous object entry.
+<i class="no-highlight">64</i>&nbsp;	 * 
+<i class="no-highlight">65</i>&nbsp;	 * @return false if the handler wants to stop parsing after return.
+<i class="no-highlight">66</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">67</i>&nbsp;     * 
+<i class="no-highlight">68</i>&nbsp;     * @see #startObjectEntry
+<i class="no-highlight">69</i>&nbsp;	 */
+<i class="no-highlight">70</i>&nbsp;	boolean endObjectEntry() throws ParseException, IOException;
+<i class="no-highlight">71</i>&nbsp;	
+<i class="no-highlight">72</i>&nbsp;	/**
+<i class="no-highlight">73</i>&nbsp;	 * Receive notification of the beginning of a JSON array.
+<i class="no-highlight">74</i>&nbsp;	 * 
+<i class="no-highlight">75</i>&nbsp;	 * @return false if the handler wants to stop parsing after return.
+<i class="no-highlight">76</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">77</i>&nbsp;     * 
+<i class="no-highlight">78</i>&nbsp;     * @see #endArray
+<i class="no-highlight">79</i>&nbsp;	 */
+<i class="no-highlight">80</i>&nbsp;	boolean startArray() throws ParseException, IOException;
+<i class="no-highlight">81</i>&nbsp;	
+<i class="no-highlight">82</i>&nbsp;	/**
+<i class="no-highlight">83</i>&nbsp;	 * Receive notification of the end of a JSON array.
+<i class="no-highlight">84</i>&nbsp;	 * 
+<i class="no-highlight">85</i>&nbsp;	 * @return false if the handler wants to stop parsing after return.
+<i class="no-highlight">86</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">87</i>&nbsp;     * 
+<i class="no-highlight">88</i>&nbsp;     * @see #startArray
+<i class="no-highlight">89</i>&nbsp;	 */
+<i class="no-highlight">90</i>&nbsp;	boolean endArray() throws ParseException, IOException;
+<i class="no-highlight">91</i>&nbsp;	
+<i class="no-highlight">92</i>&nbsp;	/**
+<i class="no-highlight">93</i>&nbsp;	 * Receive notification of the JSON primitive values:
+<i class="no-highlight">94</i>&nbsp;	 * 	java.lang.String,
+<i class="no-highlight">95</i>&nbsp;	 * 	java.lang.Number,
+<i class="no-highlight">96</i>&nbsp;	 * 	java.lang.Boolean
+<i class="no-highlight">97</i>&nbsp;	 * 	null
+<i class="no-highlight">98</i>&nbsp;	 * 
+<i class="no-highlight">99</i>&nbsp;	 * @param value - Instance of the following:
+<i class="no-highlight">100</i>&nbsp;	 * 			java.lang.String,
+<i class="no-highlight">101</i>&nbsp;	 * 			java.lang.Number,
+<i class="no-highlight">102</i>&nbsp;	 * 			java.lang.Boolean
+<i class="no-highlight">103</i>&nbsp;	 * 			null
+<i class="no-highlight">104</i>&nbsp;	 * 
+<i class="no-highlight">105</i>&nbsp;	 * @return false if the handler wants to stop parsing after return.
+<i class="no-highlight">106</i>&nbsp;	 * @throws ParseException
+<i class="no-highlight">107</i>&nbsp;	 */
+<i class="no-highlight">108</i>&nbsp;	boolean primitive(Object value) throws ParseException, IOException;
+<i class="no-highlight">109</i>&nbsp;		
+<i class="no-highlight">110</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-08-19 00:30</div>
+</div>
+</body>
+</html>
