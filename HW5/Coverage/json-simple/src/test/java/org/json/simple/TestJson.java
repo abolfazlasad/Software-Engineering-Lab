@@ -74,4 +74,20 @@ public class TestJson {
 		assertEquals("{\"myKey\":\"myValue\"}", j.toString());
 	}
 
+	@Test
+	public void testDifferenceInJSONStringOfIntFloatAndChar() {
+		// Arrange
+		int[] ints = {101, 102, 103};
+		char[] chars = {101, 102, 103};
+		float[] floats = {101, 102, 103};
+		// Act
+		String intsStr = JSONArray.toJSONString(ints);
+		String charsStr = JSONArray.toJSONString(chars);
+		String floatsStr = JSONArray.toJSONString(floats);
+		// Assert
+		assertEquals(intsStr, "[101,102,103]");
+		assertEquals(charsStr,
+				String.format("[\"%c\",\"%c\",\"%c\"]", 101, 102, 103));
+		assertEquals(floatsStr, "[101.0,102.0,103.0]");
+	}
 }
