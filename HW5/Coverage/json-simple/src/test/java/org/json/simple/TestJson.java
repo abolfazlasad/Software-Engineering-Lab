@@ -7,6 +7,8 @@ package org.json.simple;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -34,4 +36,24 @@ public class TestJson {
 		
 		assertEquals("[\"First item\",\"Second item\"]", jsonArray.toJSONString());
 	}
+
+	@Test
+	public void testJSONObjectCreation() {
+		// Arrange
+		JSONObject j = new JSONObject();
+		// Assert
+		assertEquals("{}", j.toString());
+	}
+
+	@Test
+	public void testJSONObjectCreationWithMap() {
+		// Arrange
+		Map m = new HashMap<>();
+		m.put("myKey", "myValue");
+		// Act
+		JSONObject j = new JSONObject(m);
+		// Assert
+		assertEquals("{\"myKey\":\"myValue\"}", j.toString());
+	}
+
 }
