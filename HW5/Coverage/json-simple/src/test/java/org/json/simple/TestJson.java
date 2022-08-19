@@ -38,6 +38,24 @@ public class TestJson {
 	}
 
 	@Test
+	public void testDefaultJSONValueStringForObjAndList() {
+		Map defaultValuesMap = new HashMap();
+		defaultValuesMap.put("object", new HashMap<>());
+		defaultValuesMap.put("list", new ArrayList<>());
+
+		Map obj = new HashMap();
+		obj.put("defaultValues", defaultValuesMap);
+		String actual = JSONValue.toJSONString(obj);
+		String expected = "{\"defaultValues\":" +
+				"{" +
+				"\"list\":[]," +
+				"\"object\":{}" +
+				"}" +
+				"}";
+		assertEquals(expected, actual);
+	}
+
+	@Test
 	public void testJSONObjectCreation() {
 		// Arrange
 		JSONObject j = new JSONObject();
