@@ -11,7 +11,7 @@ from fakeDataBase.db import (get_user_by_username,
 app = FastAPI()
 
 
-@app.post('/api/login', status_code=status.HTTP_200_OK)
+@app.post('/login', status_code=status.HTTP_200_OK)
 async def login(form_data: UsernamePasswordForm):
     user_in_db = get_user_by_username(form_data.username)
     if not user_in_db:
@@ -28,7 +28,7 @@ async def login(form_data: UsernamePasswordForm):
     return user_in_db
 
 
-@app.post('/api/signup', status_code=status.HTTP_201_CREATED)
+@app.post('/signup', status_code=status.HTTP_201_CREATED)
 async def signup(user: UserForm):
     user_in_db = get_user_by_username(user.username)
     if user_in_db:
@@ -48,7 +48,7 @@ async def signup(user: UserForm):
     return user_in_db
 
 
-@app.get('/api/users/{user_id}', status_code=status.HTTP_200_OK)
+@app.get('/users/{user_id}', status_code=status.HTTP_200_OK)
 async def get_user(user_id: int):
     user_in_db = get_user_by_id(user_id)
     if not user_in_db:
