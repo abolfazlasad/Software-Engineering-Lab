@@ -11,8 +11,8 @@ services:
             - ./users/.env
         volumes:
           - ./users:/app
-        ports:
-          - 8000:8000
+#       ports:
+#         - 8000:8000
 
     gateway:
         image: gateway:latest
