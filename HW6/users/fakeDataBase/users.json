@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "username": "a.asad",
+        "hashed_password": "$2b$12$16kNu5IW80k1Tw7xz2H3iOCsz0.oMZ7q5OSGa/OIfOae0WGFe8aI2",
+        "email": "asad@gmail.com",
+        "full_name": "Abolfazl Asad"
+    },
+    {
+        "id": 2,
+        "username": "b.asad",
+        "hashed_password": "$2b$12$hHXajIgAC57hxL8iacwIwOZK6SCyfEBcF.FnGJQOZv7q.owF43hBK",
+        "email": "b.asad@gmail.com",
+        "full_name": "Asad"
+    }
+]
